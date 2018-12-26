@@ -10,25 +10,21 @@ function antiDiagonals(array) {
         for (let j = 0; j < array.length; j++) {
             for (let k = 0; k < array.length; k++) {
                 if ((j + k) === count) {
-                    dummy.push(array[k][j]);
+                    dummy.push(array[j][k]);
                 }
                 if (j + k > count) {
                     continue;
                 }
             }
         }
-        // revert the dummy
-        dummy = revert(dummy);
         result.push(dummy);
         count++;
     }
     return result;
 }
 
-function revert(array) {
-    let revertedArr = [];
-    for (let i = array.length - 1; i >= 0; i--) {
-        revertedArr.push(array[i])
-    }
-    return revertedArr;
-}
+console.log(antiDiagonals([ [1, 2, 3, 4],
+    [5, 6, 7, 8],
+    [9, 10, 11, 12],
+    [13, 14, 15, 16]
+ ]));
