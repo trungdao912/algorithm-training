@@ -38,4 +38,4 @@ const spiralOrder = (n) => {
     return result;
 }
 
-console.log(spiralOrder(5));
+console.log(spiralOrder(3));
