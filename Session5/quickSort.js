@@ -9,14 +9,14 @@ function quickSort(arr, start, end) {
 
 function divide(arr, start, end) {
     let pivot = arr[end - 1];
-    let index = 0;
+    let index = start;
     for (let i = start; i < end; i++) {
         if (arr[i] < pivot) {
             swap(arr, i, index);
             index++;
         }
-        swap(arr, index, end - 1);
     }
+    swap(arr, index, end - 1);
     return index;
 }
 
