@@ -1,9 +1,12 @@
 function quickSort(arr, start, end) {
-    if (start < end) {
-        index = divide(arr, start, end);
-        quickSort(arr, start, index - 1);
-        quickSort(arr, index + 1, end);
+    let index;
+    if (start >= end) {
+        return;
     }
+    debugger;
+    index = divide(arr, start, end);
+    quickSort(arr, start, index - 1);
+    quickSort(arr, index + 1, end);
     return arr;
 }   
 
@@ -26,4 +29,4 @@ function swap(arr, pos1, pos2) {
     arr[pos2] = temp;
 }
 
-console.log(quickSort([7,2,1,6,8,5,3,4], 0, 8))
+console.log(quickSort([7,2,3,5,9,6,4], 0, 7))

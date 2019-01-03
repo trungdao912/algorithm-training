@@ -1,19 +1,26 @@
 function rotateMatrix(array) {
-    let num = array.length;
-    let value = 1;
-    
     let rowStart = 0;
-    let rowEnd = num - 1;
+    let rowEnd = array.length - 1;
+    let colStart = 0;
+    let colEnd = array.length - 1;
 
-    let colStart = num - 1;
-    let colEnd = 0;
+    while (rowStart <= rowEnd && colStart <= colEnd) {
+        let temp;
+        for (let i = colStart; i < colEnd; i++) {
+            temp = array[rowStart][i];
+            array[rowStart][i] = array[i][colEnd];
+            array[i][colEnd] = temp;
 
-    while (rowStart <= rowEnd && colEnd <= colStart) {
-        for (i = rowStart; i <= rowEnd; i++) {
-            array[i][colStart] = value;
-            value++
+            temp = array[rowStart][i];
+            array[rowStart][i] = array[colEnd][colEnd - i];
+            array[colEnd][colEnd - i] = temp;
+
+            temp = array[rowStart][i];
+            array[rowStart][i] = array[colEnd - i][i];
+            array[colEnd - i][i] = temp;
         }
-        colStart--;
+        rowStart++;
+        colEnd--;
     }
 
     return array;

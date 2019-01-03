@@ -18,6 +18,5 @@ function setMatrixZero(arr) {
             }
         }
     }
-
     return arr;
 }
