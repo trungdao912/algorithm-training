@@ -18,18 +18,22 @@ data.filter((data) => {
 })
 
 /* Exercise 3 */
+const res = data.map((data) => {
+    return `${data.first_name} ${data.last_name}`
+})
+
+/* Exercise 4*/
 // data.map((data) => {
 //     data["firstName"] = data["first_name"]
 //     delete data["first_name"]
 // })
 // console.log(data);
 
-/* Exercise 4 */
-let count = 1;
-let result = data.reduce((a, data, b) => {
-    a = a + data.age
-    a = a / (b + 1)
+/* Exercise 5 */
+
+let result = (data.reduce((a, data) => {
+    a = (a + data.age)
     return a
-}, 0)
+}, 0)) / data.length
 
 console.log(result)
