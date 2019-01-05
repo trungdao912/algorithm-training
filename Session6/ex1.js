@@ -31,9 +31,27 @@ const res = data.map((data) => {
 
 /* Exercise 5 */
 
-let result = (data.reduce((a, data) => {
-    a = (a + data.age)
-    return a
-}, 0)) / data.length
+// let result = (data.reduce((a, data) => {
+//     a = (a + data.age)
+//     return a
+// }, 0)) / data.length
 
-console.log(result)
+// console.log(result)
+
+/* Exercise 6 */
+// Ex1
+let result2 = data.reduce((a, data) => {
+    let temp = `${data.first_name} ${data.last_name}`
+    return a.concat(temp);
+}, [])
+// Ex2
+let result3 = data.reduce((a, data) => {
+    let temp;
+    if (data.age < 40) {
+        temp = data;
+        a = a.concat(temp);
+    }
+    return a;
+}, [])
+
+// Ex4
