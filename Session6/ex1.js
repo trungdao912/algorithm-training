@@ -55,3 +55,90 @@ let result3 = data.reduce((a, data) => {
 }, [])
 
 // Ex4
+
+
+/* Exercise 7 */
+function map(arr, transform) {
+    let result = [];
+    for (i of arr) {
+        result.push(transform(i));
+    }
+    return result;
+}
+
+/* Exercise 8 */
+function filter(arr, transform) {
+    let result = [];
+    for (i of arr) {
+        if (transform(i)) {
+            result.push(i);
+        }
+    }
+    return result;
+}
+
+/* Exercise 9 */
+function reduce(arr, callback, defaultValue) {
+    let result = (defaultValue || arr[0]);
+    let count;
+
+    result == arr[0] ? count = 1 : count = 0;
+    if (typeof(result) !== "object") {
+        for (count; count < arr.length; count++) {
+            result = callback(result, arr[count]);
+        }
+    } else {
+        for (count; count < arr.length; count++) {
+            let temp;
+            temp = callback(arr[count]);
+            if (typeof(callback(arr[count])) == "boolean") {
+                if (callback(arr[count])) {
+                    result.push(arr[count]);
+                }
+                continue;
+            } else {
+                result.push(temp);
+            }
+            
+        }
+    }
+
+    return result;
+}
+
+/* Exercise 10 */
+// map
+function map(arr, callback) {
+    return reduce(arr, callback, []);
+}
+
+// console.log(map([1,2,3,4], (a) => {
+//     return a + 1;
+// }))
+
+// filter
+function filter(arr, callback) {
+    return reduce(arr, callback, []);
+}
+console.log(filter([1,2,3,4,5], (a) => {
+    return a > 3;
+}));
+
+/* Exercise 11 */
+// sum
+function sum(arr) {
+    const result = arr.reduce((accumulator, currentVal) => {
+        return accumulator + currentVal;
+    }, 0)
+    return result;
+}
+
+// reverse
+function reverse(arr) {
+    const result = arr.reduce((accumulator, currentVal) => {
+            accumulator.unshift(currentVal);
+            return accumulator;
+    }, [])
+    return result;
+}
+
