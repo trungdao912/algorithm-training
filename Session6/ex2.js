@@ -45,6 +45,12 @@ let inc3 = lift(add)(1);
 
 // Ex 2.8
 
+function twice(fn) {
+    return function(a) {
+        return fn(a, a);
+    }
+}
+
 
 // Ex 2.9
 function reverse(fn) {
@@ -56,3 +62,258 @@ function reverse(fn) {
 function composeu(fn1, fn2) {
     return num => fn2(fn1(num));
 }
+
+// Ex 2.11
+function composeb(fn1, fn2) {
+    return (num1, num2, num3) => fn2(fn1(num1, num2), num3)
+}
+
+// Ex 2.12
+let limitVal;
+function limit(fn, num) {
+    limitVal = num;
+    return (num1, num2) => {
+        if (limitVal <= num) {
+            limitVal++;
+            return fn(num1, num2);
+        } 
+        return undefined;
+    }
+}
+
+// Ex 2.13
+let a;
+function from(num) {
+    a = num
+    return () => {
+        return a++;
+    }
+}
+
+// Ex 2.14
+function to(fn, endVal) {
+    let count = fn();
+    return () => {
+        count++;
+        if (count > endVal) {
+            return undefined;
+        }
+        return fn() - 1;
+    };
+}
+
+// Ex 2.15
+let start;
+let end;
+function fromTo(num1, num2) {
+    start = num1;
+    end = num2;
+    return () => {
+        if (start < end) {
+            start++;
+            return start - 1;
+        }
+        return undefined;
+    }
+}
+
+// Ex 2.16
+function element(arr, fn) {
+    return () => {
+        return arr[fn() + 1];
+    }
+}
+
+// Ex 2.17
+let count17 = 0;
+function element2(arr, fn) {
+    if (fn !== undefined) {
+        return () => {
+            return arr[fn() + 1];
+        }
+    } else {
+        return () => {
+            count17++;
+            return arr[count17 - 1];
+        }
+    }
+}
+
+// Ex 2.18
+let result18 = [];
+function collect(fn, array) {
+    return () => {
+        let val = fn();
+        array.push(val);
+        return val;
+    }
+}
+
+// Ex 2.19
+let val;
+function filter(fn1, fn2) {
+    return () => {
+        let val = fn1();
+        if (fn2(val)) {
+            return val;
+        } else {
+            val = fn1()
+            return val;
+        }
+    }
+}
+
+// Ex 2.20
+// function concat(fn1, fn2) {
+//     return () => {
+//         return fn1()
+//     }
+// }
+
+// const index = concat(fromTo(0, 3), fromTo(0, 2));
+
+// console.log(index())
+// console.log(index())
+// console.log(index())
+// console.log(index())
+
+// Ex 2.21
+
+let val21 = 1
+function gensymf(symbol) {
+    return () => {
+        val21++;
+        return symbol + (val21 - 1);
+    }
+}
+
+// Ex 2.22
+function gensymff() {
+
+}
+
+// Ex 2.23
+function fibonacci(num1, num2) {
+
+    return () => {
+        num1++;
+        return fibGen(num1);
+
+    }
+}
+
+function fibGen(num) {
+    if (num == 1) {
+        return 0;
+    }
+    if (num <= 3) {
+        return 1;
+    }
+    return fibGen(num - 1) + fibGen(num - 2);
+}
+
+// Ex 2.24
+function counter(num) {
+    return {
+        up: () => {
+            return () => {
+                return ++num;
+            };
+        },
+        down: () => {
+            return () => {
+                return --num;
+            }
+        }
+    }
+}
+
+// Ex 2.25
+function revocable(fn) {
+    return {
+        invoke: () => {
+            return fn;
+        },
+        revoke: () => {
+            return () => {
+                return undefined;
+            }
+        }
+    }
+}
+
+// Ex 2.26
+function exp(arr) {
+    if (typeof(arr) == "number") {
+        return arr;
+    }
+    return arr[0](arr[1], arr[2]);
+}
+
+// Ex 2.27
+
+// Ex 2.28
+function addg(num1) {
+    if (num1 == undefined) {
+        return undefined
+    }
+
+    return (num2) => {
+        if (num2 == undefined) {
+            return add(num1, 0);
+        }
+        res = num1 + num2;
+        return addg(res);
+    }
+}
+
+// Ex 2.29
+function liftg(fn) {
+
+    return (num1) => {
+        return (num2) => {
+            if (num2 == undefined) {
+                return fn(num1, 1)
+            }
+            return () => {
+                return(fn(num1, num2))
+            }
+        }
+    } 
+}
+
+// Ex 2.30
+const result = []
+function arrayg(num) {
+    return () => {
+        result.push(num)
+        return (num2) => {
+            if (num2 == undefined) {
+                return ;
+            }
+            return arrayg(num2);
+        }
+    }
+}
+
+console.log(arrayg(3)()())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
