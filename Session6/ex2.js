@@ -103,17 +103,13 @@ function to(fn, endVal) {
 }
 
 // Ex 2.15
-let start;
-let end;
 function fromTo(num1, num2) {
-    start = num1;
-    end = num2;
     return () => {
-        if (start < end) {
-            start++;
-            return start - 1;
+        if (num1 < num2) {
+            return num1++;
+        } else {
+            return undefined;
         }
-        return undefined;
     }
 }
 
@@ -164,18 +160,18 @@ function filter(fn1, fn2) {
 }
 
 // Ex 2.20
-// function concat(fn1, fn2) {
-//     return () => {
-//         return fn1()
-//     }
-// }
-
-// const index = concat(fromTo(0, 3), fromTo(0, 2));
-
-// console.log(index())
-// console.log(index())
-// console.log(index())
-// console.log(index())
+function concat(fn1, fn2) {
+    
+    return () => {
+        let res = fn1();    
+        if (res !== undefined) {
+            return res;
+        } else {
+            res = fn2();
+            return res;
+        }
+    }
+}
 
 // Ex 2.21
 
@@ -188,8 +184,14 @@ function gensymf(symbol) {
 }
 
 // Ex 2.22
-function gensymff() {
-
+function gensymff(fn, num) {
+    val21 = fn(num);
+    return (symbol) => {
+        return () => {
+            val21++;
+            return symbol + (val21 - 1);
+        }
+    }
 }
 
 // Ex 2.23
@@ -252,6 +254,7 @@ function exp(arr) {
 
 // Ex 2.27
 
+
 // Ex 2.28
 function addg(num1) {
     if (num1 == undefined) {
@@ -269,34 +272,40 @@ function addg(num1) {
 
 // Ex 2.29
 function liftg(fn) {
+    return callback;
 
-    return (num1) => {
-        return (num2) => {
-            if (num2 == undefined) {
-                return fn(num1, 1)
-            }
-            return () => {
-                return(fn(num1, num2))
-            }
+    function callback(num1) {
+        if (num1 == undefined) {
+            return undefined;
         }
-    } 
-}
-
-// Ex 2.30
-const result = []
-function arrayg(num) {
-    return () => {
-        result.push(num)
         return (num2) => {
+
             if (num2 == undefined) {
-                return ;
+                return fn(num1, 1);
             }
-            return arrayg(num2);
+
+            return callback(num2)
+            
         }
     }
 }
 
-console.log(arrayg(3)()())
+
+
+console.log(liftg(mul)(3)(4)(5)())
+
+// Ex 2.30
+const result = []
+function arrayg(num) {
+    if (num == undefined) {
+        return result;
+    }
+    return (num2) => {
+        result.push(num);
+        return arrayg(num2);
+    }
+}
+
 
 
 
