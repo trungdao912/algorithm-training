@@ -254,7 +254,6 @@ function exp(arr) {
 
 // Ex 2.27
 
-
 // Ex 2.28
 function addg(num1) {
     if (num1 == undefined) {
@@ -271,28 +270,23 @@ function addg(num1) {
 }
 
 // Ex 2.29
-function liftg(fn) {
-    return callback;
 
+function liftg(fn) {
+    let res;
+    return callback;
     function callback(num1) {
         if (num1 == undefined) {
             return undefined;
         }
         return (num2) => {
-
             if (num2 == undefined) {
-                return fn(num1, 1);
+                return fn(num1, 1)
             }
-
-            return callback(num2)
-            
+            res = fn(num1, num2);
+            return callback(res);
         }
     }
 }
-
-
-
-console.log(liftg(mul)(3)(4)(5)())
 
 // Ex 2.30
 const result = []
