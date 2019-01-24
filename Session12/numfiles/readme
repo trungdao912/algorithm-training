@@ -1,0 +1,8 @@
+Notes to Challenge 42
+
+Start from file 1024.
+Collect the binary digit enclosed in [].
+Proceed to get the next file and the next binary digit.
+Continue till the last file.
+
+Good luck!
