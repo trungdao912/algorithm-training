@@ -16,21 +16,21 @@ fs.readdir("./numfiles", "utf-8", function(err, data) {
     });
 
   // Callback style
-  // function cb(i) {
-  //     fs.readFile("./numfiles/" + data[i], "utf-8", (err, content) => {
-  //         if (err) {
-  //             throw err;
-  //         }
-  //         res += content[content.length - 2];
-  //         if (i == data.length - 1) {
-  //             console.log(res);
-  //             return;
-  //         }
-  //         i++
-  //         cb(i);
-  //     })
-  // }
-  // cb(0);
+  function cb(i) {
+      fs.readFile("./numfiles/" + data[i], "utf-8", (err, content) => {
+          if (err) {
+              throw err;
+          }
+          res += content[content.length - 2];
+          if (i == data.length - 1) {
+              console.log(res);
+              return;
+          }
+          i++
+          cb(i);
+      })
+  }
+  cb(0);
 
   /* ------------------------------------------------ */
   // Promise Style
