@@ -1,0 +1,7 @@
+<p
+  (click)="onToggleComplete(toDoThing.id)"
+  [ngClass]="{completed: toDoThing.status}"
+>
+  Task Name: {{ toDoThing.taskName }} Completed: {{ toDoThing.status }}
+  <button (click)="onDeleteItem(toDoThing.id)">Delete</button>
+</p>

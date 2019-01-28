@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <p>Enter text into the input field to add items to your list</p>
+  <p>Click the item to mark it as complete</p>
+  <p>Click the "X" to remove the item from your list</p>
+  <input type="text" placeholder="Enter todo" [(ngModel)]="todothing"/> <button (click)="onAddToDoThing(todothing)">Add</button>
+  <ul>
+    <li *ngFor="let toDothing of toDoThings">
+      <app-todo-thing [toDoThing]="toDothing"></app-todo-thing>
+    </li>
+  </ul>
+</div>
