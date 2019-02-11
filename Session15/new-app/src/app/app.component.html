@@ -1,0 +1,46 @@
+<h1>A simple web app</h1>
+<div>
+  <h2>Order by
+    <span>
+      <select
+        class="form-control"
+        (change)="changeValue($event)"
+      >
+        <option value="Id">Id</option>
+        <option value="firstName">First Name</option>
+        <option value="lastName">Last Name</option>
+        <option value="email">Email</option>
+        <option value="gender">Gender</option>
+        <option value="birthday">DOB</option>
+        <option value="salary">Salary</option>
+        <option value="phone">Phone</option>
+      </select>
+    </span>
+  </h2>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Phone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of data">
+      <th scope="row">{{ data.id }}</th>
+      <td>{{ data.firstName }}</td>
+      <td>{{ data.lastName }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.gender }}</td>
+      <td>{{ data.birthday }}</td>
+      <td>{{ data.salary }}</td>
+      <td>{{ data.phone | customPipe }}</td>
+    </tr>
+  </tbody>
+</table>
