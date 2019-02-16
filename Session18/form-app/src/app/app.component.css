@@ -1,0 +1,112 @@
+/* <div class="container">
+  <div class="row">
+    <h1>Survey Form</h1>
+  </div>
+
+  <div class="row">
+    <p>Let us know how we can improve freeCodeCamp</p>
+  </div>
+
+  <div class="row">
+    <form (ngSubmit)="onSubmit()" #form="ngModel">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="email" ngModel class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter your name" name="name">
+          </div>
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" placeholder="Age" name="age">
+      </div>
+
+      <div class="row">
+        How likely is that you would recommend freeCodeCamp to friend
+      </div>
+      <div class="radio">
+        <label for="">
+          <input type="radio" name="status" value="Definitely">
+        </label>
+      </div>
+
+      <div class="radio">
+          <label for="">
+            <input type="radio" name="status" value="Maybe">
+          </label>
+        </div>
+
+        <div class="radio">
+            <label for="">
+              <input type="radio" name="status" value="Not sure">
+            </label>
+          </div>
+
+      <div class="form-group">
+        <label for="freeCodeCamp">What do you like most FCC</label>
+        <select 
+          name="freeCodeCamp" 
+          id="freeCodeCamp"
+          [ngModel]="defaultQuestion"
+          >
+          <option value="challenges">Challenges</option>
+          <option value="projects">Projects</option>
+          <option value="community">Community</option>
+          <option value="open">Open Source</option>
+        </select>
+      </div>
+
+      <div class="form-check">
+        <div class="row">
+          Things that should be improved in the future (Check all that apply)
+        </div>
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Front-End Projects</label>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Back-end Projects</label>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Data Visualization</label>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Challenges</label>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Open Source Community</label>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Gitter help rooms</label>
+        </div>
+
+        <div class="row">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Videos</label>
+        </div>
+
+
+      </div>
+      <div class="row">
+        Any Comments or Suggestions
+        <div class="form-group">
+            <textarea name="questionAnswer" rows="3" class="form-control" placeholder="Enter your comment here ..."></textarea>
+          </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+</div> */
