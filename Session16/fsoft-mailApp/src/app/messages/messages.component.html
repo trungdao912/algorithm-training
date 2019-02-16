@@ -1,0 +1,19 @@
+<div class="container-fluid message-container">
+  <div class="row">
+    <ul class="list-group col-md-3">
+      <li class="list-group-item" routerLink="inbox">inbox</li>
+      <li class="list-group-item" routerLink="finance">finance</li>
+      <li class="list-group-item" routerLink="travel">travel</li>
+      <li class="list-group-item" routerLink="personal">personal</li>
+      <li class="list-group-item" routerLink="spam">spam</li>
+      <li class="list-group-item" routerLink="drafts">drafts</li>
+      <li class="list-group-item" routerLink="sent">sent</li>
+    </ul>
+    <div class="col-md-9 inbox">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="row">
+    <router-outlet name="inboxdetail"></router-outlet>
+  </div>
+</div>

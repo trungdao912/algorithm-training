@@ -1,0 +1,18 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Sender</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let field of data" [routerLink]="[{ outlets: {'inboxdetail': [field._id]} }]">
+        <th scope="row">{{ field._id }}</th>
+        <td>{{ field.subject }}</td>
+        <td>{{ field.date }}</td>
+      </tr>
+    </tbody>
+    <router-outlet name="inboxdetail"></router-outlet>
+  </table>
+

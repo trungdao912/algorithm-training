@@ -1,0 +1,8 @@
+li {
+  cursor: pointer;
+}
+
+.inbox {
+  height: 37vh;
+  overflow-y: scroll;
+}
