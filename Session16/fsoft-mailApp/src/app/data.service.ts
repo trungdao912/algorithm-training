@@ -917,8 +917,11 @@ export class DataService {
   }
 
   getDataById(id: string): Message[] {
-    return this.data.filter((obj) => {
-      return obj['_id'] === id;
+    return this.data.filter((f) => {
+      if (f._id === id) {
+        return f;
+      }
     })
   }
+
 }

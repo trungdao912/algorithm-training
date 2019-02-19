@@ -8,9 +8,9 @@ import { PreferencesComponent } from './preferences/preferences.component';
 
 const routes: Routes = [
   { path: 'messages', component: MessagesComponent, children: [
-    { path: ':name', component: InboxComponent, children: [
-      { path: ':id', component: InboxdetailComponent, outlet: 'inboxdetail' }
-    ] }
+    { path: ':name', component: InboxComponent
+     },
+     { path: ':id', component: InboxdetailComponent, outlet: 'inboxdetail' }
   ]},
   { path: 'contacts', component: ContactsComponent },
   { path: 'preferences', component: PreferencesComponent }

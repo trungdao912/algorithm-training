@@ -1,0 +1,9 @@
+.artists {
+  height: 50vh;
+  overflow: scroll;
+}
+
+img {
+  height: 100px;
+  padding-bottom: 10px
+}

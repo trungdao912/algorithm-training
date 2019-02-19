@@ -1,0 +1,16 @@
+<ul class="list-group" *ngFor="let track of tracks">
+  <li class="list-group-item">
+    <div class="row">
+      <span class="col-md-6">{{ track.name }}</span>
+      <span class="col-md-6"><audio controls *ngIf="track.preview_url; else nopreview">
+          <source src="{{ track.preview_url }}" type="audio/mpeg">
+
+        </audio></span>
+        <ng-template #nopreview>
+            <p>No Preview</p>
+          </ng-template>
+    </div>
+  </li>
+</ul>
+
+

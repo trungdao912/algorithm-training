@@ -8,18 +8,18 @@
   </div>
 
   <div class="row">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
         <div class="form-group">
             <label for="name">Name</label>
-            <input type="email" ngModel class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter your name" name="name">
+            <input type="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Enter your name" formControlName="name">
           </div>
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" ngModel class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email" name="email">
+        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email" formControlName="email">
       </div>
       <div class="form-group">
         <label for="age">Age</label>
-        <input type="text" ngModel class="form-control" id="age" placeholder="Age" name="age">
+        <input type="text" class="form-control" id="age" placeholder="Age" name="age" formControlName="age">
       </div>
 
       <div class="row">
@@ -27,84 +27,51 @@
       </div>
       <div class="radio">
         <label for="">
-          <input type="radio" name="status" value="Definitely" ngModel>
+          <input type="radio" value="Definitely" formControlName="status">
           Definitely
         </label>
       </div>
-
       <div class="radio">
           <label for="">
-            <input type="radio" name="status" value="Maybe" ngModel>
+            <input type="radio" value="Maybe" formControlName="status">
             Maybe
           </label>
         </div>
 
-        <div class="radio">
+<div class="radio">
             <label for="">
-              <input type="radio" name="status" value="Not sure" ngModel>
+              <input type="radio" name="status" value="Not sure" formControlName="status">
               Not sure
             </label>
           </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="freeCodeCamp">What do you like most FCC</label>
-        <select 
-          class="form-control"
-          name="freeCodeCamp" 
-          ngModel
+        <select
+          name="freeCodeCamp"
+          id="freeCodeCamp"
+          formControlName="freeCodeCamp"
           >
-          <option value="default" disabled>Select an option</option>
+          <option value="challenges">Challenges</option>
           <option value="projects">Projects</option>
           <option value="community">Community</option>
           <option value="open">Open Source</option>
         </select>
-      </div>
+      </div> -->
 
       <div class="form-check">
         <div class="row">
           Things that should be improved in the future (Check all that apply)
         </div>
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check" [(ngModel)]="front">
-            <label class="form-check-label" for="exampleCheck1">Front-End Projects</label>
+        <div class="row" *ngFor="let control of freeCodeCampArray.controls; let i = index">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" [formControl]="control" (change)="checkboxChange()">
+            <label class="form-check-label" for="exampleCheck1">{{ options[i] }}</label>
         </div>
-
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="check" ngModel value="back">
-            <label class="form-check-label" for="exampleCheck1">Back-end Projects</label>
-        </div>
-
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Data Visualization</label>
-        </div>
-
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Challenges</label>
-        </div>
-
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Open Source Community</label>
-        </div>
-
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Gitter help rooms</label>
-        </div>
-
-        <div class="row">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Videos</label>
-        </div>
-
-
       </div>
       <div class="row">
         Any Comments or Suggestions
         <div class="form-group">
-            <textarea name="questionAnswer" rows="3" class="form-control" placeholder="Enter your comment here ..." ngModel></textarea>
+            <textarea name="questionAnswer" rows="3" class="form-control" placeholder="Enter your comment here ..."></textarea>
           </div>
       </div>
 

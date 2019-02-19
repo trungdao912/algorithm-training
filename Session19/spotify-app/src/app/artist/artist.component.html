@@ -1,0 +1,22 @@
+<div class="container-fluid artists">
+    <ul class="list-group">
+      <div class="row">
+          <li *ngFor="let value of values" class="list-group-item col-md-4" [routerLink]="value.id">
+              <p>
+                Name: {{ value.name }}
+              </p>
+              <p *ngFor="let genre of value.genres">
+                Genre: {{ genre }}
+              </p>
+              <p>Popularity: {{ value.popularity }}</p>
+
+                <div class="">
+                    <img src="{{ value.images[1]?.url }}" alt="" class="img-thumbnail">
+                </div>
+
+            </li>
+      </div>
+
+      </ul>
+
+</div>

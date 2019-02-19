@@ -7,7 +7,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let field of data" [routerLink]="[{ outlets: {'inboxdetail': [field._id]} }]">
+      <tr *ngFor="let field of data" [routerLink]="['/messages', { outlets: {'inboxdetail': [field._id]} }]">
         <th scope="row">{{ field._id }}</th>
         <td>{{ field.subject }}</td>
         <td>{{ field.date }}</td>
