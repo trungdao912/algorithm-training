@@ -1,0 +1,38 @@
+<div class="wrapper-container">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="sort">
+      <mat-icon>filter_list</mat-icon>
+      <span>Sort</span>
+    </button>
+    <mat-menu #sort="matMenu">
+      <button mat-menu-item (click)="onSelect('title')">
+        <span>Name</span>
+      </button>
+      <button mat-menu-item (click)="onSelect('viewCount')">
+        <span>View Count</span>
+      </button>
+    </mat-menu>
+    <button mat-menu-item [matMenuTriggerFor]="pagination">
+      <mat-icon>pages</mat-icon>
+      <span>Pagination</span>
+    </button>
+    <mat-menu #pagination="matMenu">
+      <button mat-menu-item (click)="onPag(10)">
+        <span>10</span>
+      </button>
+      <button mat-menu-item (click)="onPag(20)">
+        <span>20</span>
+      </button>
+    </mat-menu>
+  </mat-menu>
+</div>
+
+<div class="wrap-container">
+  <mat-icon class="icon">search</mat-icon>
+  <mat-form-field class="input-field">
+      <input matInput type="text" placeholder="Type to search for videos" (change)="onChange()" [(ngModel)]="value">
+  </mat-form-field>
+</div>

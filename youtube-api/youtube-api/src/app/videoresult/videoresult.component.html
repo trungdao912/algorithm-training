@@ -1,0 +1,22 @@
+<div class="card" style="width: 70rem;">
+  <iframe width="1119px" height="360"
+[src]="sanitizer.bypassSecurityTrustResourceUrl(plus(data?.items[0].id))">
+</iframe>
+  <div class="card-body">
+    <h2 class="card-title"><b>Title</b>: {{ data?.items[0].snippet.title }}</h2>
+    <p class="card-text"><b>Description</b>: {{ data?.items[0].snippet.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h3><b>Channel Title</b>: {{ data?.items[0].snippet.channelTitle }}</h3></li>
+    <li class="list-group-item"><b>The Tags</b>: <span *ngFor="let i of data?.items[0].snippet.tags ">{{ i }}, </span></li>
+    <li class="list-group-item"><b>View Count</b>: {{ data?.items[0].statistics.viewCount }}</li>
+    <li class="list-group-item"><b>Like Count</b>: {{ data?.items[0].statistics.likeCount }}</li>
+    <li class="list-group-item"><b>Dislike Count</b>: {{ data?.items[0].statistics.dislikeCount }}</li>
+    <li class="list-group-item"><b>Favourite Count</b>: {{ data?.items[0].statistics.favoriteCount }}</li>
+    <li class="list-group-item"><b>Comment Count</b>: {{ data?.items[0].statistics.commentCount }}</li>
+  </ul>
+</div>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close color="accent">Close</button>
+  </mat-dialog-actions>

@@ -1,0 +1,28 @@
+.sort {
+    margin: 1rem 0;
+}
+
+.wrap-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+.wrapper-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: .5rem 0;
+}
+
+.input-field {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+}
+
+.icon {
+    width: 3%;
+    cursor: pointer;
+}

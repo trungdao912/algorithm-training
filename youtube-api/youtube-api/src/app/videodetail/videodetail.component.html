@@ -1,0 +1,48 @@
+<!-- <div class="row">
+    <div class="col-md-12">
+      <ul class="list-unstyled">
+        <li class="media" *ngFor="let item of videoList | paginate: { itemsPerPage: num, currentPage: p }">
+          <img [src]="item.snippet.thumbnails.default?.url" class="mr-3" alt="...">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">
+              {{ item.snippet.title }}
+            </h5>
+            {{ item.snippet.description }}
+            <p><b>Channel:</b> {{ item.snippet.channelTitle }}</p>
+            <p><b>Publish Date: </b>{{ item.snippet.publishedAt | date }}</p>
+            <a [routerLink]="item.id.videoId">Video Full Detail</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+<table mat-table [dataSource]="dataSource | paginate: { itemsPerPage: num, currentPage: p }" multiTemplateDataRows class="mat-elevation-z8">
+  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+    <th mat-header-cell *matHeaderCellDef> {{ column }} </th>
+    <td mat-cell *matCellDef="let element"> {{ element.snippet[column] }} </td>
+  </ng-container>
+
+  <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <mat-card class="example-card">
+              <img mat-card-image [src]="element.snippet.thumbnails.high.url" alt="thumbnails">
+              <mat-card-actions>
+                <button mat-button color="accent" (click)="openDialog(element.id.videoId)">MORE INFO</button>
+              </mat-card-actions>
+            </mat-card>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+    [class.example-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
