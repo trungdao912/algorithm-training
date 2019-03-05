@@ -1,6 +1,10 @@
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VideoresultComponent } from './videoresult.component';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material';
+import { InjectionToken } from '@angular/core';
 
 describe('VideoresultComponent', () => {
   let component: VideoresultComponent;
@@ -8,7 +12,16 @@ describe('VideoresultComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoresultComponent ]
+      declarations: [ VideoresultComponent ],
+      imports: [
+        MatDialogModule
+      ],
+      providers: [
+        { provide: HttpClient },
+        { provide: ActivatedRoute },
+        // tslint:disable-next-line:align
+        { provide:  MAT_DIALOG_DATA }
+      ]
     })
     .compileComponents();
   }));
