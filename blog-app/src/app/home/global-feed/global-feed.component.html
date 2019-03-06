@@ -1,0 +1,30 @@
+
+  <div class="feed-toggle">
+    <ul class="nav nav-pills outline-active">
+      <li class="nav-item">
+        <a class="nav-link disabled" href="">Your Feed</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="">Global Feed</a>
+      </li>
+    </ul>
+  </div>
+  <div class="article-preview" *ngFor="let article of articlesList">
+    <div class="article-meta">
+      <a href="profile.html"
+        ><img [src]="article.author.image"
+      /></a>
+      <div class="info">
+        <a href="" class="author">{{ article.author.username }}</a>
+        <span class="date">{{ article.createdAt }}</span>
+      </div>
+      <button class="btn btn-outline-primary btn-sm pull-xs-right">
+        <i class="ion-heart"></i> {{ article.favoritesCount }}
+      </button>
+    </div>
+    <a href="" class="preview-link">
+      <h1>{{ article.title }}</h1>
+      <p>{{ article.body }}</p>
+      <span>Read more...</span>
+    </a>
+  </div>
