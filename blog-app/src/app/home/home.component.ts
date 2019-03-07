@@ -1,3 +1,4 @@
+import { AuthService } from './../auth/auth.service';
 import { Article } from './../models/article.model';
 import { Author } from './../models/author.model';
 import { DataService } from './../data.service';
@@ -10,14 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articlesList: Article[];
-
-  constructor(private data: DataService) { }
+  condition: boolean;
+  loggedIn: boolean;
+  
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-    this.data.getAllArticles().subscribe((val: { articles: Article[] }) => {
-      this.articlesList = val.articles;
-      console.log(this.articlesList);
-    });
+    this.auth.isAuthentiCated();
+    this.auth.isAuthenticate.subscribe((boo) => {
+      this.condition = boo;
+      if (this.condition) {
+        this.loggedIn = true;
+      } else {
+        this.loggedIn = false;
+      }
+    })
+  }
+
+  onChange() {
+    this.condition = !this.condition;
   }
 
 }

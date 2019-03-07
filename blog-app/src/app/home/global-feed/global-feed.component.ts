@@ -16,7 +16,6 @@ export class GlobalFeedComponent implements OnInit {
   ngOnInit() {
     this.data.getAllArticles().subscribe((val: { articles: Article[] }) => {
       this.articlesList = val.articles;
-      console.log(this.articlesList);
     });
   }
 }

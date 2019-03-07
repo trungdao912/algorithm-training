@@ -9,7 +9,18 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-9">
-          <app-global-feed></app-global-feed>
+          <div class="feed-toggle">
+              <ul class="nav nav-pills outline-active">
+                <li class="nav-item">
+                  <a class="nav-link disabled" (click)="onChange()" [ngClass]="{active: condition}" *ngIf="loggedIn">Your Feed</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" (click)="onChange()" [ngClass]="{active: !condition}">Global Feed</a>
+                </li>
+              </ul>
+            </div>
+            <app-global-feed *ngIf="!condition"></app-global-feed>
+            <app-your-feed *ngIf="condition"></app-your-feed>
       </div>
       <div class="col-md-3">
         <div class="sidebar">
