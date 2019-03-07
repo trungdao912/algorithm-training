@@ -17,6 +17,11 @@ import { SettingsComponent } from './settings/settings.component';
 import { TokenInterceptorService } from './TokenInterceptorService';
 import { NewArticleComponent } from './article/new-article/new-article.component';
 import { EditArticleComponent } from './article/edit-article/edit-article.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MyArticleComponent } from './profile/my-article/my-article.component';
+import { FavouriteComponent } from './profile/favourite/favourite.component';
+import { ArticleComponent } from './article/article/article.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,12 @@ import { EditArticleComponent } from './article/edit-article/edit-article.compon
     TagComponent,
     SettingsComponent,
     NewArticleComponent,
-    EditArticleComponent
+    EditArticleComponent,
+    ProfileComponent,
+    MyArticleComponent,
+    FavouriteComponent,
+    ArticleComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,

@@ -9,11 +9,8 @@ import { DataService } from './data.service';
 export class AppComponent implements OnInit {
   title = 'blog-app';
 
-  constructor(private data: DataService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.data.getUser().subscribe((data) => {
-      console.log(data);
-    })
   }
 }

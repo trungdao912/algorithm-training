@@ -8,12 +8,16 @@ import { Article } from './models/article.model';
   providedIn: 'root'
 })
 export class DataService {
+  getUser() {
+    return this.http.get(this.USER_URL);
+  }
 
   ALL_ARTICLES_URL = 'https://conduit.productionready.io/api/articles';
   USER_ARTICLES_URL = 'https://conduit.productionready.io/api/articles/feed';
   GET_USER_INFO_URL = 'https://conduit.productionready.io/api/users/login';
   REGISTRATION_URL = 'https://conduit.productionready.io/api/users';
   USER_URL = 'https://conduit.productionready.io/api/user';
+  PROFILE_URL = 'https://conduit.productionready.io/api/profiles/';
 
   constructor(private http: HttpClient) { }
 
@@ -48,8 +52,8 @@ export class DataService {
     })
   }
 
-  getUser() {
-    return this.http.get(this.USER_URL);
+  getProfile(username: string) {
+    return this.http.get(`${this.PROFILE_URL}${username}`);
   }
 
   updateUser(imageUrl?: string, name?: string, bio?: string, email?: string, password?: string) {
@@ -77,5 +81,37 @@ export class DataService {
 
   getArticle(slug: string) {
     return this.http.get(`${this.ALL_ARTICLES_URL}/${slug}`);
+  }
+
+  getAllUserArticle(username: string) {
+    return this.http.get(this.ALL_ARTICLES_URL, {
+      params: {
+        author: `${username}`,
+        limit: '5',
+        offset: '0'
+      }
+    });
+  }
+
+  getFavouriteArticle(username: string) {
+    return this.http.get(this.ALL_ARTICLES_URL, {
+      params: {
+        favorited: `${username}`,
+        limit: '5',
+        offset: '0'
+      }
+    });
+  }
+
+  getComments(slug: string) {
+    return this.http.get(`${this.ALL_ARTICLES_URL}/${slug}/comments`);
+  }
+
+  postComment(body: string, slug: string) {
+    return this.http.post(`${this.ALL_ARTICLES_URL}/${slug}/comments`, {
+      'comment': {
+        'body': body
+      }
+    });
   }
 }

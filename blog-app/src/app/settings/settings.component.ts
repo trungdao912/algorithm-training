@@ -35,6 +35,7 @@ export class SettingsComponent implements OnInit {
   }
 
   onSubmit() {
+    // tslint:disable-next-line:max-line-length
     this.data.updateUser(this.myForm.get('imageUrl').value, this.myForm.get('name').value, this.myForm.get('bio').value, this.myForm.get('email').value, this.myForm.get('password').value)
       .subscribe((returnVal) => {
         console.log(returnVal);
