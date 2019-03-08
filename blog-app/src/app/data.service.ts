@@ -114,4 +114,24 @@ export class DataService {
       }
     });
   }
+
+  favouritePost(slug: string) {
+    return this.http.post(`${this.ALL_ARTICLES_URL}/${slug}/favorite`, {})
+  }
+
+  unfavouritePost(slug: string) {
+    return this.http.delete(`${this.ALL_ARTICLES_URL}/${slug}/favorite`);
+  }
+
+  deleteComment(slug: string, id: number) {
+    return this.http.delete(`${this.ALL_ARTICLES_URL}/${slug}/comments/${id}`)
+  }
+
+  followUser(username: string) {
+    return this.http.post(`${this.PROFILE_URL}/${username}/follow`, {});
+  }
+
+  unfollowUser(username: string) {
+    return this.http.delete(`${this.PROFILE_URL}/${username}/follow`, {});
+  }
 }

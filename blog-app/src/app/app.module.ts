@@ -22,6 +22,7 @@ import { MyArticleComponent } from './profile/my-article/my-article.component';
 import { FavouriteComponent } from './profile/favourite/favourite.component';
 import { ArticleComponent } from './article/article/article.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { DebounceClickDirective } from './debounce-click.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     MyArticleComponent,
     FavouriteComponent,
     ArticleComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    DebounceClickDirective
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,6 @@ import {
 import { Observable } from 'rxjs';
 
 // tslint:disable-next-line:max-line-length
-export const API_TOKEN = `BQC8bQz9x5jsxfXhst4gy_9nNO1IQrm7KfDO9CTdPg9bfCqudcvyW_ddn2woWA37nFDVELaD987Yk9xzF6-IJNvNf6dx1YSnkq6Lz9NKp9x1_ds-9NJ50B9Gu_6T4RJyNvp4eH-V_R8uQILJhhBLJelivVR1d1rTGQ`;
 
 @Injectable({
   providedIn: 'root'

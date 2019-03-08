@@ -10,10 +10,15 @@
           <p>
             {{ info?.bio }}
           </p>
-          <button class="btn btn-sm btn-outline-secondary action-btn">
+          <button class="btn btn-sm btn-outline-secondary action-btn" (click)="followUser()" *ngIf="!followed">
             <i class="ion-plus-round"></i>
             &nbsp;
-            Follow {{ info?.username }}
+            <span>Follow</span> {{ info?.username }}
+          </button>
+          <button class="btn btn-sm btn-outline-secondary action-btn" (click)="unfollowUser()" *ngIf="followed">
+            <i class="ion-plus-round"></i>
+            &nbsp;
+            <span *ngIf="followed">Unfollow</span> {{ info?.username }}
           </button>
         </div>
 

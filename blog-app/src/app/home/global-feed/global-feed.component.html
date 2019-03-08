@@ -8,7 +8,10 @@
         <a routerLink="/{{ article.author.username }}" routerLinkActive="router-link-active"  class="author">{{ article.author.username }}</a>
         <span class="date">{{ article.createdAt }}</span>
       </div>
-      <button class="btn btn-outline-primary btn-sm pull-xs-right">
+      <button appDebounceClick (debounceClick)="onFavourite(article.slug, article, unfavourite)" [debounceTime]="500" class="btn btn-outline-primary btn-sm pull-xs-right" *ngIf="!article.favorited" #favourite>
+        <i class="ion-heart"></i> {{ article.favoritesCount }}
+      </button>
+      <button appDebounceClick (debounceClick)="onUnfavourite(article.slug, article, favourite)" [debounceTime]="500" class="btn btn-outline-primary btn-sm pull-xs-right green" *ngIf="article.favorited" #unfavourite>
         <i class="ion-heart"></i> {{ article.favoritesCount }}
       </button>
     </div>
